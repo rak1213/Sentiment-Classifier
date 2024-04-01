@@ -9,10 +9,22 @@ This project is focused on building and comparing multiple sentiment classificat
 The project utilizes Jupyter Notebooks (`*.ipynb`) to ensure that the process and results are transparent and easily understandable. The key components of the project include:
 
 - **Data Preprocessing**: Scripts for cleaning and preparing the data for modeling.
-- **Model Training**: Notebooks for training sentiment classification models.
-- **Hyperparameter Tuning**: Utilization of Optuna for optimizing model performance.
+- **Training**: Notebooks for training sentiment classification models along with utilization of Optuna for optimizing model performance.
+- **Models**: Stores the saved models. 
 - **Inference**: Scripts for applying the trained models to unseen data and evaluating their performance.
 - **eda**: Notebook showing data analysis of the twitter dataset.
+- **utils**: Scripts for saving and loading the models.
+   
+### Implementation Details
+-- **Model Training Pipeline**:
+The training process is encapsulated within a pipeline that automates the sequence of vectorization and classification. This approach ensures consistency and efficiency in transforming the raw text data into a format suitable for model training and subsequent predictions. The pipeline consists of:
+
+A vectorization step that converts text data into numerical features. Depending on the model and the nature of the dataset, this could involve techniques like CountVectorizer, TF-IDFVectorizer, or word embeddings. For simplicaity we have taken TF-IDFVectorizer.
+
+A classification step where the numerical features are used to train a sentiment classification model. Various classifiers are explored, including Logistic Regression, Naive Bayes, Support Vector Machines, and Random Forest Classifier.
+
+-- **Hyperparameter Optimization with Optuna**:
+Optuna is integrated into the model training process to systematically search for the best hyperparameters. This optimization not only enhances model accuracy but also contributes to understanding the impact of different hyperparameters on model performance. The best model configuration identified through Optuna's optimization trials is saved, allowing for easy reproduction of results and application to new datasets.
 
 ### Inference Results
 
